@@ -9,14 +9,23 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition />
-		</Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <RelativePanel HorizontalAlignment="Center">
+            <TextBox x:Name="mUrl" Text="https://localhost:443/Portal/Signin.aspx" ></TextBox>
+            <Button x:Name="mNavigateButton" Click="OnNavigate" Content="Navigate" RelativePanel.RightOf="mUrl"></Button>
+         </RelativePanel>
 
-		<Button Content="Navigate to https://news.ycombinator.com" HorizontalAlignment="Center"
-			Click="ButtonBase_OnClick"/>
-
-		<WebView x:Name="Web" Grid.Row="1"
+        <ProgressRing Grid.Row="1" Name="mProgressRing" Width="50" Height="50" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+        
+        <WebView x:Name="Web" Grid.Row="1"
 			ScriptNotify="Web_OnScriptNotify"
 			NavigationStarting="Web_OnNavigationStarting"
-			DOMContentLoaded="Web_OnDOMContentLoaded"/>
+			DOMContentLoaded="Web_OnDOMContentLoaded"
+            NavigationCompleted="Web_OnNavigationCompleted"
+            NavigationFailed="Web_OnNavigationFailed"
+            FrameNavigationCompleted="Web_OnFrameNavigationCompleted"
+            ContentLoading="Web_OnContentLoading"/>
+        <TextBlock x:Name="mError" Foreground="Red" Grid.Row="2" Text=""></TextBlock>
 	</Grid>
 </Page>

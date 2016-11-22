@@ -32,7 +32,7 @@ namespace ExternalNotify
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                DebugSettings.EnableFrameRateCounter = true;
+                DebugSettings.EnableFrameRateCounter = false;
             }
 #endif
 
